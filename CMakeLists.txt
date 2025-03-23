@@ -18,13 +18,18 @@ endfunction()
 
 if(PROJECT_IS_TOP_LEVEL)
     set(DTL_TESTS ON CACHE BOOL "")
+    set(DTL_BENCHMARKS ON CACHE BOOL "")
 else ()
     set(DTL_TESTS OFF CACHE BOOL "")
+    set(DTL_BENCHMARKS OFF CACHE BOOL "")
 endif ()
 
 if(DTL_TESTS)
     enable_testing()
     dtl_add_3pp(gtest gmock)
+endif ()
+if(DTL_BENCHMARKS)
+    dtl_add_3pp(gbenchmark benchmark)
 endif ()
 
 add_subdirectory(lib)
