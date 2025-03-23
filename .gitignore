@@ -1,0 +1,15 @@
+# C++ cmake target
+build/
+install/
+out-*/
+cmake-build-*
+
+# local files and folders
+local-*
+
+CMakeUserPresets.json
+
+# various IDE:s private files.
+.idea/
+.vs/
+.vscode/
