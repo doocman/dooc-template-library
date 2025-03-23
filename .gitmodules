@@ -1,0 +1,3 @@
+[submodule "cmake-presets"]
+	path = cmake-presets
+	url = https://github.com/doocman/cmake-presets.git
