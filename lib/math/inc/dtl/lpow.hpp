@@ -19,11 +19,7 @@ template <strict_multipliable B, std::integral E>
 constexpr B lpow(B const& base, E exp) {
   if constexpr (std::is_signed_v<E>) {
     if (exp < E{}) {
-      if constexpr (std::is_integral_v<B>) {
-        return B{};
-      } else {
-        return B{1} / lpow(base, static_cast<std::make_unsigned_t<E>>(-exp));
-      }
+      return B{1} / lpow(base, static_cast<std::make_unsigned_t<E>>(-exp));
     } else {
       return lpow(base, static_cast<std::make_unsigned_t<E>>(exp));
     }

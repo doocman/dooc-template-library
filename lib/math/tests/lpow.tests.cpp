@@ -64,5 +64,9 @@ TYPED_TEST(LPowTests, AccuracyOneMinusEps) // NOLINT
   auto v = this->call(input, 1024);
   EXPECT_THAT(v, Eq(std::pow(input, 1024)));
 }
-
+TYPED_TEST(LPowTests, IntegerOneExpNegOne) // NOLINT
+{
+  auto v = this->call(1, -1);
+  EXPECT_THAT(v, Eq(1));
+}
 }
