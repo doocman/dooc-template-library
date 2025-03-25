@@ -23,28 +23,28 @@ static void BM_pow_with_lpow(benchmark::State& s) {
   auto gen = gen_base{};
   auto v = gen.do_get_value();
   for (auto _ : s) {
-    benchmark::DoNotOptimize(lpow(v, s.range(0) + (s.range(0) >> 4)));
+    benchmark::DoNotOptimize(lpow(v, s.range(0)));
   }
 }
 static void BM_pow_with_std_pow(benchmark::State& s) {
   auto gen = gen_base{};
   auto v = gen.do_get_value();
   for (auto _ : s) {
-    benchmark::DoNotOptimize(std::pow(v, s.range(0) + (s.range(0) >> 4)));
+    benchmark::DoNotOptimize(std::pow(v, s.range(0)));
   }
 }
 static void BM_pow_complex_with_lpow(benchmark::State& s) {
   auto gen = gen_base{};
   auto v = std::complex{gen(), gen()};
   for (auto _ : s) {
-    benchmark::DoNotOptimize(lpow(v, s.range(0) + (s.range(0) >> 4)));
+    benchmark::DoNotOptimize(lpow(v, s.range(0)));
   }
 }
 static void BM_pow_complex_with_std_pow(benchmark::State& s) {
   auto gen = gen_base{};
   auto v = std::complex{gen(), gen()};
   for (auto _ : s) {
-    benchmark::DoNotOptimize(std::pow(v, s.range(0) + (s.range(0) >> 4)));
+    benchmark::DoNotOptimize(std::pow(v, s.range(0)));
   }
 }
 BENCHMARK(BM_pow_with_lpow)->RangeMultiplier(4)->Range(4ll, 2ll << 50);
