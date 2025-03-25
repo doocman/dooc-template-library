@@ -9,5 +9,7 @@ target_link_libraries(${CT} PRIVATE
         GTest::gmock_main
 
         dtl::dtl.math
+
+        cmpr::add_warnings
 )
 

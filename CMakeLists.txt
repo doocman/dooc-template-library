@@ -26,6 +26,7 @@ endif ()
 
 if(DTL_TESTS)
     enable_testing()
+    add_subdirectory(cmake-presets)
     dtl_add_3pp(gtest gmock)
 endif ()
 if(DTL_BENCHMARKS)

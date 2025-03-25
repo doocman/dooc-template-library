@@ -1,6 +1,8 @@
 
 #include <dtl/lpow.hpp>
 
+#include <complex>
+
 #include <gmock/gmock.h>
 
 namespace dtl {
@@ -68,5 +70,23 @@ TYPED_TEST(LPowTests, IntegerOneExpNegOne) // NOLINT
 {
   auto v = this->call(1, -1);
   EXPECT_THAT(v, Eq(1));
+}
+TYPED_TEST(LPowTests, ComplexImaginarySquare) // NOLINT
+{
+  auto v = this->call(std::complex<float>(0.f, 1.f), 2);
+  EXPECT_THAT(v.real(), Eq(-1.f));
+  EXPECT_THAT(v.imag(), Eq(0.f));
+}
+TYPED_TEST(LPowTests, ComplexImaginaryCubic) // NOLINT
+{
+  auto v = this->call(std::complex<float>(0.f, 1.f), 3);
+  EXPECT_THAT(v.real(), Eq(0.f));
+  EXPECT_THAT(v.imag(), Eq(-1.f));
+}
+TYPED_TEST(LPowTests, ComplexImaginaryInvCubic) // NOLINT
+{
+  auto v = this->call(std::complex<float>(0.f, 1.f), -3);
+  EXPECT_THAT(v.real(), Eq(0.f));
+  EXPECT_THAT(v.imag(), Eq(1.f));
 }
 }
