@@ -1,5 +1,5 @@
 
-#include <dtl/lpow.hpp>
+#include <dtl/powi.hpp>
 
 #include <complex>
 
@@ -17,7 +17,7 @@ struct LPowTests : Test {
 
 struct basic_lpow {
   static constexpr decltype(auto) call(auto&& b, auto&& e) {
-    return lpow(b, e);
+    return powi(b, e);
   }
 };
 

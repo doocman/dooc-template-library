@@ -1,5 +1,5 @@
 
-#include <dtl/lpow.hpp>
+#include <dtl/powi.hpp>
 
 #include <complex>
 #include <random>
@@ -23,7 +23,7 @@ static void BM_pow_with_lpow(benchmark::State& s) {
   auto gen = gen_base{};
   auto v = gen.do_get_value();
   for (auto _ : s) {
-    benchmark::DoNotOptimize(lpow(v, s.range(0)));
+    benchmark::DoNotOptimize(powi(v, s.range(0)));
   }
 }
 static void BM_pow_with_std_pow(benchmark::State& s) {
@@ -37,7 +37,7 @@ static void BM_pow_complex_with_lpow(benchmark::State& s) {
   auto gen = gen_base{};
   auto v = std::complex{gen(), gen()};
   for (auto _ : s) {
-    benchmark::DoNotOptimize(lpow(v, s.range(0)));
+    benchmark::DoNotOptimize(powi(v, s.range(0)));
   }
 }
 static void BM_pow_complex_with_std_pow(benchmark::State& s) {
