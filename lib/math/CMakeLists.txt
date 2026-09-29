@@ -10,7 +10,7 @@ target_sources(${CT} INTERFACE
             #"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/inc>"
             #"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDE_DIR}>"
         FILES
-            "inc/dtl/lpow.hpp"
+            "inc/dtl/powi.hpp"
 )
 
 if (DTL_TESTS)
