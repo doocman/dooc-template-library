@@ -98,7 +98,7 @@ add_subdirectory(lib)
 if (DTL_INSTALL)
     include(CMakePackageConfigHelpers)
     install(TARGETS
-            ${DTL_ALL_LIBS} dtl
+            ${DTL_ALL_LIBS}
             EXPORT dtlTargets
             PUBLIC_HEADER COMPONENT Development
             CXX_MODULES_BMI COMPONENT Development DESTINATION lib/modules
