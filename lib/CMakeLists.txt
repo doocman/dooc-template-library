@@ -1,5 +1,5 @@
 
-
+add_subdirectory(internal)
 add_subdirectory(math)
 add_subdirectory(string)
 

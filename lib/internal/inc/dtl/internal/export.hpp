@@ -1,0 +1,15 @@
+
+#ifndef DOOC_TEMPLATE_LIBRARY_DTL_INTERNAL_EXPORT_HPP
+#define DOOC_TEMPLATE_LIBRARY_DTL_INTERNAL_EXPORT_HPP
+
+#ifdef DTL_MODULES_EXPORT
+#define DTL_EXPORT export
+#define DTL_EXPORT_BEGIN export {
+#define DTL_EXPORT_END }
+#else
+#define DTL_EXPORT
+#define DTL_EXPORT_BEGIN
+#define DTL_EXPORT_END
+#endif
+
+#endif
