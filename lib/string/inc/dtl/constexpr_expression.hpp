@@ -729,6 +729,13 @@ constexpr has_peek_as_view auto string_from_invocable() {
     return string(raw);
   }
 }
+template <std::invocable F>
+  requires(
+      std::is_empty_v<F> && std::ranges::range<std::invoke_result_t<F>> &&
+      std::same_as<char, std::ranges::range_value_t<std::invoke_result_t<F>>>)
+constexpr has_peek_as_view auto string_from_invocable(F = {}) {
+  return string_from_invocable<F{}>();
+}
 
 DTL_EXPORT_END
 } // namespace nttp
