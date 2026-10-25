@@ -10,6 +10,9 @@ import dtl.string;
 namespace dtl {
 using namespace ::testing;
 static_assert(nttp::string("hello") == nttp::string("hello"));
+static_assert(
+    nttp::string_from_invocable<[] { return std::string_view("123"); }>() ==
+    nttp::string("123"));
 
 template <nttp::string> struct dummy {};
 [[maybe_unused]] static constexpr auto dummy_v = dummy<"hello">{};

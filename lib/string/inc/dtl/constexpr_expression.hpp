@@ -712,6 +712,24 @@ template <std::integral I> struct as_string<I> {
   }
 };
 template <std::integral I> as_string(I) -> as_string<I>;
+template <std::invocable auto f>
+  requires(
+      std::ranges::range<std::invoke_result_t<decltype(f)>> &&
+      std::same_as<
+          char, std::ranges::range_value_t<std::invoke_result_t<decltype(f)>>>)
+constexpr has_peek_as_view auto string_from_invocable() {
+  auto constexpr sz = std::ranges::size(f());
+  if constexpr (sz == 0 || *std::ranges::begin(f()) == '\0') {
+    return string("");
+  } else {
+    auto constexpr arr_size =
+        *(std::ranges::end(f()) - 1) == '\0' ? sz : sz + 1;
+    char raw[arr_size] = {};
+    std::ranges::copy(f(), std::ranges::begin(raw));
+    return string(raw);
+  }
+}
+
 DTL_EXPORT_END
 } // namespace nttp
 
