@@ -8,15 +8,14 @@
 namespace dtl {
 using namespace ::testing;
 
-template <typename T>
-struct LPowTests : Test {
-  static constexpr decltype(auto) call(auto&& base, auto&& exp) {
+template <typename T> struct LPowTests : Test {
+  static constexpr decltype(auto) call(auto &&base, auto &&exp) {
     return T::call(base, exp);
   }
 };
 
 struct basic_lpow {
-  static constexpr decltype(auto) call(auto&& b, auto&& e) {
+  static constexpr decltype(auto) call(auto &&b, auto &&e) {
     return powi(b, e);
   }
 };
@@ -47,12 +46,13 @@ TYPED_TEST(LPowTests, ThreePowTwoIsNine) // NOLINT
 TYPED_TEST(LPowTests, ThreePowNegThreeIsOneOverTwentyseven) // NOLINT
 {
   auto v = this->call(3., -3);
-  EXPECT_THAT(v, DoubleEq(1./27.));
+  EXPECT_THAT(v, DoubleEq(1. / 27.));
 }
 TYPED_TEST(LPowTests, NoNegativeOverflow) // NOLINT
 {
   auto v = this->call(2., std::numeric_limits<std::int_least8_t>::min());
-  EXPECT_THAT(v, Eq(std::pow(2., std::numeric_limits<std::int_least8_t>::min())));
+  EXPECT_THAT(v,
+              Eq(std::pow(2., std::numeric_limits<std::int_least8_t>::min())));
 }
 TYPED_TEST(LPowTests, AccuracyOnePlusEps) // NOLINT
 {
@@ -89,4 +89,4 @@ TYPED_TEST(LPowTests, ComplexImaginaryInvCubic) // NOLINT
   EXPECT_THAT(v.real(), Eq(0.f));
   EXPECT_THAT(v.imag(), Eq(1.f));
 }
-}
+} // namespace dtl

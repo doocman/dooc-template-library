@@ -3,15 +3,15 @@
 #define DOOC_TEMPLATE_LIBRARY_DTL_INTERNAL_STD_HPP
 
 #include <algorithm>
-#include <cstddef>
-#include <string_view>
-#include <ranges>
-#include <string>
-#include <format>
-#include <iterator>
 #include <array>
 #include <charconv>
+#include <cstddef>
+#include <format>
 #include <initializer_list>
+#include <iterator>
+#include <ranges>
+#include <string>
+#include <string_view>
 
 #if __has_include(<inplace_vector>)
 #include <inplace_vector>

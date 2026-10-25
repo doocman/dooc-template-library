@@ -19,4 +19,4 @@ TEST(InplaceVector, ConstructFromInitList) {
   auto v = inplace_vector<int, 2>{1};
   EXPECT_THAT(v, ElementsAre(Eq(1)));
 }
-}
+} // namespace dtl
