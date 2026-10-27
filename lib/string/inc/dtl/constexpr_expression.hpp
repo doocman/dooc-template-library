@@ -682,6 +682,10 @@ template <std::size_t sz, typename T, std::integral auto cache_length,
           typename F>
 pre_transform(c_array<T, sz> const &, constant_t<cache_length>, F)
     -> pre_transform<cache_length, string<sz>, F>;
+template <has_peek_as_view T, std::integral auto cache_length, typename F>
+  requires(!std::is_array_v<T>)
+pre_transform(T const &, constant_t<cache_length>, F)
+    -> pre_transform<cache_length, T, F>;
 
 template <typename> struct as_string;
 template <std::integral I> struct as_string<I> {
